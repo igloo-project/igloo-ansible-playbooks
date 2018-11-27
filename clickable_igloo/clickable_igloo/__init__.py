@@ -62,6 +62,13 @@ TODO: full implementation of dry_run
             os.makedirs(parent)
         if not dry_run:
             os.symlink(os.path.relpath(link[0], parent), link[1])
+        else:
+            logger.warn("{} > {} creation skipped (dry-run)".format(link[1], link[0]))
+    for link in deleted_links:
+        if os.path.islink(link):
+            os.remove(link)
+        else:
+            logger.warn("{} orphan deletion skipped (dry-run)".format(link))
 
 
 def symlink_folders(from_root, to_root, folders=DEFAULT_FOLDERS, dry_run=False):
