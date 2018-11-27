@@ -1,0 +1,14 @@
+---
+
+##
+## network related tasks
+##
+- hosts: "{{ common_hosts }}"
+  roles:
+    - role: powo.utils
+
+    - role: dev_hosts
+      delegate_to: localhost
+      run_once: no
+      become: true
+      become_user: root

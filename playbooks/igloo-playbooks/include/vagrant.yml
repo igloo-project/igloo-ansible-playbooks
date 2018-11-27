@@ -1,0 +1,13 @@
+---
+
+## Initialize vagrant host when needed
+## (if common_hosts:&vagrant is empty, play is skipped)
+- hosts: "{{ common_hosts }}:&vagrant"
+  gather_facts: no
+  roles:
+    - role: vagrant
+      vagrant_base: "{{ playbook_vagrant_base }}"
+      vagrant_task: 'up'
+      vagrant_host: "{{ playbook_vagrant_alias | default(inventory_hostname) }}"
+      vagrant_root_path: "{{ playbook_vagrant_path }}"
+      delegate_to: localhost
