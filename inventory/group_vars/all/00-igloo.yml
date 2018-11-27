@@ -1,0 +1,94 @@
+---
+## TODO: include minimal vars ?
+
+playbook_context_name: ''
+playbook_igloo_profile: "{{ arg_environment | default("qualification") }}"
+playbook_remote_user: tomcat
+## use inventory and group_vars to override by environment
+playbook_project_branch: master
+playbook_vagrant_base: centos/7
+playbook_application_folders:
+  - path: "/data/services/{{ playbook_application_name }}"
+    mode: u=rwx,o=rx
+    owner: "{{ playbook_remote_user }}"
+
+## use command-line args to override
+playbook_build_igloo: false
+playbook_build_project: false
+
+# TODO: remove
+playbook_letsencrypt: false
+playbook_letsencrypt_renew_email: "test@example.com"
+
+# TODO: orphaned property
+playbook_maven_environment: null
+
+## ssl configuration
+# TODO: basculer sur une config type letsencrypt
+playbook_ssl_certificate: /etc/httpd/certs/{{ playbook_application_name }}.crt
+playbook_ssl_key: /etc/httpd/certs/{{ playbook_application_name }}.key
+playbook_ssl_cacertificate: "{{ playbook_ssl_certificate }}"
+playbook_httpd_ssl_certificate: "{{ playbook_ssl_certificate }}"
+playbook_httpd_ssl_key: "{{ playbook_ssl_key }}"
+playbook_httpd_ssl_cacertificate: "{{ playbook_ssl_cacertificate }}"
+
+## application build, playbook_build_project=true only vars
+## detect if we are building basic-application
+playbook_maven_folder: "{{ 'basic-application/' if playbook_application_name == 'basic-application' else '' }}"
+playbook_git_repository_name: "{{ playbook_project_git_url | basename | replace('.git', '') }}"
+playbook_local_git_folder: "{{ '~/git' | expanduser }}"
+# TODO: renommer ..._git_project ?
+playbook_local_git_repo: "{{ playbook_local_git_folder }}/{{ playbook_git_repository_name }}-livraison"
+
+## application build, playbook_build_igloo=true only vars
+playbook_igloo_branch: dev
+# TODO: autodetect version at build time
+playbook_igloo_version: 1.0-SNAPSHOT
+playbook_local_git_igloo: "{{ playbook_local_git_folder }}/igloo-livraison"
+playbook_local_java_home: "{{ '~/Documents/apps/jdk-8' | expanduser }}"
+
+## application location, application configuration
+playbook_application_path: /data/services/web/{{ playbook_application_name }}
+
+## tomcat configuration
+playbook_tomcat_ajp_port: 8009
+playbook_tomcat_http_port: 8080
+playbook_tomcat_shutdown_port: 8005
+playbook_tomcat_ajp_max_threads: "{{ playbook_tomcat_max_threads }}"
+playbook_tomcat_http_max_threads: "{{ playbook_tomcat_max_threads }}"
+playbook_application_tomcat_path: "{{ playbook_application_path }}/tomcat"
+# TODO: use in configuration
+playbook_tomcat_enable_ajp: true
+playbook_tomcat_enable_http: true
+
+## postgresql configuration
+_playbook_application_name_database: "{{ playbook_application_name | replace('-','_') }}"
+playbook_postgresql_port: 5432
+playbook_postgresql_host: localhost
+playbook_postgresql_database: "{{ _playbook_application_name_database }}"
+playbook_postgresql_schema: "{{ playbook_postgresql_user }}"
+playbook_postgresql_maxPoolSize: 30
+playbook_postgresql_user: "{{ _playbook_application_name_database }}"
+playbook_postgresql_password: "{{ _playbook_application_name_database }}"
+playbook_smtp_host: localhost
+playbook_smtp_port: 25
+
+## misc
+playbook_download_target_path: /data/work
+playbook_is_vagrant_host: "{{ 'vagrant' in group_names }}"
+
+## configuration properties
+# TODO: fix data.path (?)
+playbook_config_properties: {
+  'db.user': "{{ playbook_postgresql_user }}",
+  'db.password': "{{ playbook_postgresql_password }}",
+  'db.jdbcUrl': 'jdbc:postgresql://{{ playbook_postgresql_host }}:{{ playbook_postgresql_port }}/{{ playbook_postgresql_database }}',
+  'db.maxPoolSize': "{{ playbook_postgresql_maxPoolSize }}",
+  'hibernate.defaultSchema': "{{ playbook_postgresql_schema }}",
+  'data.path': '{{ playbook_application_path }}/data',
+  'data.shared-path': '${data.path}',
+  'notification.smtp.host': '{{ playbook_smtp_host }}',
+  'notification.smtp.port': "{{ playbook_smtp_port }}",
+  'wicket.backgroundThreadContextBuilder.url.serverPort': "{{ playbook_tomcat_http_port }}",
+  'task.startMode': 'auto'
+}
