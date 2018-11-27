@@ -2,15 +2,19 @@
 ## TODO: include minimal vars ?
 
 playbook_context_name: ''
-playbook_igloo_profile: "{{ arg_environment | default("qualification") }}"
 playbook_remote_user: tomcat
 ## use inventory and group_vars to override by environment
 playbook_project_branch: master
-playbook_vagrant_base: centos/7
 playbook_application_folders:
   - path: "/data/services/{{ playbook_application_name }}"
     mode: u=rwx,o=rx
     owner: "{{ playbook_remote_user }}"
+
+## base image for vagrant
+playbook_vagrant_base: centos/7
+playbook_vagrant_path: "{{ inventory_dir | dirname }}/vagrant"
+## box alias, may be overriden by host
+playbook_vagrant_alias: "{{ inventory_hostname }}"
 
 ## use command-line args to override
 playbook_build_igloo: false
@@ -40,10 +44,11 @@ playbook_local_git_folder: "{{ '~/git' | expanduser }}"
 # TODO: renommer ..._git_project ?
 playbook_local_git_repo: "{{ playbook_local_git_folder }}/{{ playbook_git_repository_name }}-livraison"
 
-## application build, playbook_build_igloo=true only vars
+## igloo build, playbook_build_igloo=true only vars
+playbook_igloo_git_url: git@github.com:igloo-project/igloo-parent.git
 playbook_igloo_branch: dev
 # TODO: autodetect version at build time
-playbook_igloo_version: 1.0-SNAPSHOT
+playbook_igloo_version: 1.2-SNAPSHOT
 playbook_local_git_igloo: "{{ playbook_local_git_folder }}/igloo-livraison"
 playbook_local_java_home: "{{ '~/Documents/apps/jdk-8' | expanduser }}"
 
