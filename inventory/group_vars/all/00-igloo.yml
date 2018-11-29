@@ -76,7 +76,6 @@ playbook_postgresql_schema: "{{ playbook_postgresql_user }}"
 playbook_postgresql_maxPoolSize: 30
 playbook_postgresql_user: "{{ _playbook_application_name_database }}"
 playbook_postgresql_password: "{{ _playbook_application_name_database }}"
-playbook_postgresql_maxPoolSize: 30
 
 ## SMTP configuration
 playbook_smtp_host: localhost

@@ -11,3 +11,23 @@
       vagrant_host: "{{ playbook_vagrant_alias | default(inventory_hostname) }}"
       vagrant_root_path: "{{ playbook_vagrant_path }}"
       delegate_to: localhost
+
+- hosts: "{{ common_hosts }}:&vagrant"
+  tasks:
+    # TODO: add a variable for locale(s ?)
+    - name: check locale
+      # locales are generally missing from vm templates to save some space
+      when: playbook_is_vagrant_host and ansible_os_family == 'RedHat'
+      become: true
+      become_user: root
+      block:
+
+        - name: locales · check fr_FR.UTF8
+          shell: "locale -a | grep -i 'fr_FR.utf8'"
+          ignore_errors: yes
+          register: check_locale
+          changed_when: check_locale.stdout == ""
+
+        - name: locales · reinstall glibc-common
+          shell: "yum -y reinstall glibc-common"
+          when: check_locale.stdout == ""
