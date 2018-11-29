@@ -61,6 +61,7 @@ playbook_tomcat_http_port: 8080
 playbook_tomcat_shutdown_port: 8005
 playbook_tomcat_ajp_max_threads: "{{ playbook_tomcat_max_threads }}"
 playbook_tomcat_http_max_threads: "{{ playbook_tomcat_max_threads }}"
+playbook_tomcat_max_threads: 15
 playbook_application_tomcat_path: "{{ playbook_application_path }}/tomcat"
 # TODO: use in configuration
 playbook_tomcat_enable_ajp: true
@@ -75,6 +76,9 @@ playbook_postgresql_schema: "{{ playbook_postgresql_user }}"
 playbook_postgresql_maxPoolSize: 30
 playbook_postgresql_user: "{{ _playbook_application_name_database }}"
 playbook_postgresql_password: "{{ _playbook_application_name_database }}"
+playbook_postgresql_maxPoolSize: 30
+
+## SMTP configuration
 playbook_smtp_host: localhost
 playbook_smtp_port: 25
 
@@ -97,3 +101,34 @@ playbook_config_properties: {
   'wicket.backgroundThreadContextBuilder.url.serverPort': "{{ playbook_tomcat_http_port }}",
   'task.startMode': 'auto'
 }
+
+playbook_java_version: 1.8.0
+playbook_java_package: java-{{ playbook_java_version }}-openjdk-headless
+playbook_java_key: "{{ playbook_java_package }}"
+
+_playbook_java_runtime_openjdk:
+  packaging: package
+  package: "{{ playbook_java_package }}"
+  java_home: /usr/lib/jvm/jre-{{ playbook_java_version }}-openjdk
+  key: "{{ playbook_java_key }}"
+
+_playbook_java_runtime_oracle:
+  id: "{{ playbook_java_id }}"
+  version: "{{ playbook_java_version }}"
+  version_build: "{{ playbook_java_version_build }}"
+  arch: "{{ playbook_java_arch }}"
+  type: "{{ playbook_java_type }}"
+  checksum: "{{ playbook_java_checksum }}"
+  key: "{{ playbook_java_key }}"
+
+playbook_java_runtime: |
+  {% set runtime = null %}
+  {%- if playbook_java_package is defined -%}
+    {% set runtime = lookup('vars', '_playbook_java_runtime_openjdk') %}
+  {%- else -%}
+    {% set runtime = lookup('vars', '_playbook_java_runtime_oracle') %}
+  {%- endif -%}
+  {{ runtime }}
+
+playbook_java_runtimes:
+  - "{{ playbook_java_runtime }}"

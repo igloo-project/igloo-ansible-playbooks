@@ -1,0 +1,14 @@
+---
+
+## ansible configuration
+ansible_user: vagrant
+ansible_ssh_common_args: "-F {{ playbook_vagrant_path }}/{{ playbook_vagrant_alias }}/ssh_config"
+
+## igloo-ansible-playbooks configuration
+playbook_is_vagrant_host: true
+playbook_environment: development
+playbook_remote_user: vagrant
+
+## dev_hosts registration
+dh_hostnames:
+  - '@self'
