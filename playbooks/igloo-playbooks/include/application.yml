@@ -2,6 +2,15 @@
 
 - hosts: "{{ common_hosts }}"
   roles:
+
+    - role: config
+      config_name: "{{ playbook_application_name }}"
+      config_user: "{{ playbook_remote_user }}"
+      config_group: "{{ playbook_remote_user }}"
+      config_properties: "{{ playbook_config_properties }}"
+      become: true
+      become_user: root
+
     - role: war
       war_application_war_src: "{{ playbook_local_git_repo }}/{{ playbook_maven_folder }}{{ playbook_application_name }}-webapp/target/{{ playbook_application_name }}.war"
       war_application_war_remote_src: no
