@@ -1,10 +1,27 @@
 ---
+
+##
+## DO NOT MODIFY THIS FILE; this file is from igloo-ansible-playbooks project
+## Public vars are exposed in 00-igloo-{minimal,extra}.yml
+## Modify other vars at your own risk
+##
+
 ## TODO: include minimal vars ?
 
+## used to name folders, name context, postgresql username, ...
+## special characters are replaced by _
+playbook_application_name: MINIMAL
+## application public vhost
+playbook_front_server_name: MINIMAL
+## override with group_vars
+playbook_igloo_profile: MINIMAL
+## '' -> ROOT context
 playbook_context_name: ''
+## user for tomcat process
 playbook_remote_user: tomcat
 ## use inventory and group_vars to override by environment
 playbook_project_branch: master
+## manage folders creation
 playbook_application_folders:
   - path: "/data/services/{{ playbook_application_name }}"
     mode: u=rwx,o=rx
@@ -20,13 +37,6 @@ playbook_vagrant_alias: "{{ inventory_hostname }}"
 playbook_build_igloo: false
 playbook_build_project: false
 
-# TODO: remove
-playbook_letsencrypt: false
-playbook_letsencrypt_renew_email: "test@example.com"
-
-# TODO: orphaned property
-playbook_maven_environment: null
-
 ## ssl configuration
 # TODO: basculer sur une config type letsencrypt
 playbook_ssl_certificate: /etc/httpd/certs/{{ playbook_application_name }}.crt
@@ -40,6 +50,8 @@ playbook_httpd_ssl_cacertificate: "{{ playbook_ssl_cacertificate }}"
 ## detect if we are building basic-application
 playbook_maven_folder: "{{ 'basic-application/' if playbook_application_name == 'basic-application' else '' }}"
 playbook_git_repository_name: "{{ playbook_project_git_url | basename | replace('.git', '') }}"
+## used if build is done by ansible (see playbook_build_project)
+playbook_project_git_url: MINIMAL
 playbook_local_git_folder: "{{ '~/git' | expanduser }}"
 # TODO: renommer ..._git_project ?
 playbook_local_git_repo: "{{ playbook_local_git_folder }}/{{ playbook_git_repository_name }}-livraison"
@@ -87,7 +99,7 @@ playbook_is_vagrant_host: "{{ 'vagrant' in group_names }}"
 
 ## configuration properties
 # TODO: fix data.path (?)
-playbook_config_properties: {
+default_playbook_config_properties: {
   'db.user': "{{ playbook_postgresql_user }}",
   'db.password': "{{ playbook_postgresql_password }}",
   'db.jdbcUrl': 'jdbc:postgresql://{{ playbook_postgresql_host }}:{{ playbook_postgresql_port }}/{{ playbook_postgresql_database }}',
@@ -100,6 +112,7 @@ playbook_config_properties: {
   'wicket.backgroundThreadContextBuilder.url.serverPort': "{{ playbook_tomcat_http_port }}",
   'task.startMode': 'auto'
 }
+playbook_config_properties: "{{ default_playbook_config_properties }}"
 
 playbook_java_version: 1.8.0
 playbook_java_package: java-{{ playbook_java_version }}-openjdk-headless
