@@ -54,7 +54,7 @@ playbook_git_repository_name: "{{ playbook_project_git_url | basename | replace(
 playbook_project_git_url: MINIMAL
 playbook_local_git_folder: "{{ '~/git' | expanduser }}"
 # TODO: renommer ..._git_project ?
-playbook_local_git_repo: "{{ playbook_local_git_folder }}/{{ playbook_git_repository_name }}-livraison"
+playbook_local_git_project: "{{ playbook_local_git_folder }}/{{ playbook_git_repository_name }}-livraison"
 
 ## igloo build, playbook_build_igloo=true only vars
 playbook_igloo_git_url: git@github.com:igloo-project/igloo-parent.git
