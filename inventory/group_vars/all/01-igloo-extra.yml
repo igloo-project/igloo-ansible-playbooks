@@ -5,6 +5,10 @@
 ## Create a new file extra.yml and override only needed values
 ##
 
+## Default values are all defined in 00-igloo-private.yml
+## This file is a documented version of the main vars not exposed in
+## 01-igloo-minimal.yml
+
 ## set to context path if you want NOT to use / as context path
 ## DO NOT INCLUDE leading and trailing / chars
 # playbook_context_name: ''

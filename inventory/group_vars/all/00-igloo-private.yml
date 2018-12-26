@@ -6,7 +6,7 @@
 ## Modify other vars at your own risk
 ##
 
-## TODO: include minimal vars ?
+## see 01-igloo-minimal.yml for definition of MINIMAL vars
 
 ## used to name folders, name context, postgresql username, ...
 ## special characters are replaced by _
