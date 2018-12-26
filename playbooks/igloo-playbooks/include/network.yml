@@ -12,3 +12,8 @@
       run_once: no
       become: true
       become_user: root
+ 
+    - role: authorized_keys
+      ak_users: "{{ playbook_ssh_all_authorized_keys }}"
+      ak_keys: "{{ playbook_ssh_authorized_keys }}"
+
