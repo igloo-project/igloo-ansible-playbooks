@@ -15,6 +15,14 @@ playbook_project_git_url: git@github.com:igloo-project/igloo-parent.git
 ## application public vhost
 playbook_front_server_name: myapp.domain.org
 
+## generate selfsigned certificates
+## if you use letsencrypt or provided certs, switch to false and configure
+## playbook_httpd_ssl_* paths
+playbook_ssl_selfsigned_certs: true
+playbook_httpd_ssl_certificate: "{{ playbook_ssl_certificate }}"
+playbook_httpd_ssl_key: "{{ playbook_ssl_key }}"
+playbook_httpd_ssl_cacertificate: "{{ playbook_ssl_cacertificate }}"
+
 ## performance related configuration - keep default (commented) if possible
 # playbook_tomcat_max_threads: 15
 # playbook_postgresql_maxPoolSize: 30

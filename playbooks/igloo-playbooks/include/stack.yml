@@ -47,6 +47,7 @@
       ssl_selfsigned_aliases: []
       ssl_selfsigned_certificate: "{{ playbook_ssl_certificate }}"
       ssl_selfsigned_key: "{{ playbook_ssl_key }}"
+      when: playbook_ssl_selfsigned_certs
 
     - role: httpd
       become: true
