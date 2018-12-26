@@ -29,7 +29,7 @@ playbook_application_folders:
 
 ## base image for vagrant
 playbook_vagrant_base: centos/7
-playbook_vagrant_path: "{{ inventory_dir | dirname }}/vagrant"
+playbook_vagrant_path: "{{ inventory_dir | dirname }}/run/vagrant"
 ## box alias, may be overriden by host
 playbook_vagrant_alias: "{{ inventory_hostname }}"
 
