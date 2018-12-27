@@ -24,6 +24,8 @@
 
 ## parent folder for git clones (if build activated)
 # playbook_local_git_folder: "{{ '~/git' | expanduser }}"
+## war path (target/) from project root
+# playbook_local_git_war_path: "{{ playbook_application_name }}-webapp/target/{{ playbook_application_name }}.war"
 
 ## JAVA_HOME used for **building**
 # playbook_local_java_home: "{{ '~/Documents/apps/jdk-8' | expanduser }}"
@@ -52,6 +54,7 @@
 # playbook_tomcat_ajp_port: 8009
 # playbook_tomcat_http_port: 8080
 # playbook_tomcat_shutdown_port: 8005
+# playbook_tomcat_extra_opts: "{{ '-Digloo.profile=' + playbook_igloo_profile if playbook_igloo_profile is defined and playbook_igloo_profile else none }}"
 
 ## postgresql configuration
 ## (default database name based on application's name)

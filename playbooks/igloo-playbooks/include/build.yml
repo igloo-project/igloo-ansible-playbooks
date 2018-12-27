@@ -36,7 +36,7 @@
       mb_git_repository: "{{ playbook_project_git_url }}"
       mb_git_branch: "{{  playbook_project_branch }}"
       mb_check_files:
-        - "{{ playbook_local_git_project }}/{{ playbook_maven_folder }}{{ playbook_application_name }}-webapp/target/{{ playbook_application_name }}.war"
+        - "{{ playbook_local_git_project }}/{{ playbook_maven_folder }}{{ playbook_local_git_war_path }}"
       mb_mvn_command: mvn -U {{ '-P' + playbook_maven_profile if playbook_maven_profile is defined and playbook_maven_profile else '' }} -DskipTests -am clean install
       mb_project_path: "{{ playbook_local_git_project }}"
       mb_rebuild: false

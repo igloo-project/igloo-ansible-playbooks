@@ -94,7 +94,7 @@
       tomcat_default_java_home: "{{ jdks[playbook_java_key].path }}"
       tomcat_timeout_stop: 30s
       tomcat_download_target_path: "{{ playbook_download_target_path }}"
-      tomcat_default_extra_opts: "{{ '-Digloo.profile=' + playbook_igloo_profile if playbook_igloo_profile is defined and playbook_igloo_profile else none }}"
+      tomcat_default_extra_opts: "{{ playbook_tomcat_extra_opts }}"
       tomcat_catalina_bases:
         - name: "{{ playbook_application_name }}"
           path: "{{ playbook_application_tomcat_path }}"

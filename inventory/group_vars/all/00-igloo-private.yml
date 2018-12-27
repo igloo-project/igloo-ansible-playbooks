@@ -53,8 +53,8 @@ playbook_git_repository_name: "{{ playbook_project_git_url | basename | replace(
 ## used if build is done by ansible (see playbook_build_project)
 playbook_project_git_url: MINIMAL
 playbook_local_git_folder: "{{ '~/git' | expanduser }}"
-# TODO: renommer ..._git_project ?
 playbook_local_git_project: "{{ playbook_local_git_folder }}/{{ playbook_git_repository_name }}-livraison"
+playbook_local_git_war_path: "{{ playbook_application_name }}-webapp/target/{{ playbook_application_name }}.war"
 
 ## igloo build, playbook_build_igloo=true only vars
 playbook_igloo_git_url: git@github.com:igloo-project/igloo-parent.git
