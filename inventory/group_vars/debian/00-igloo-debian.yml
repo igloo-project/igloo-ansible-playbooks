@@ -1,0 +1,24 @@
+---
+
+##
+## DO NOT MODIFY THIS FILE; this file is from igloo-ansible-playbooks project
+## we do not rely on setup task to detect distribution as it is impossible
+## to perform setup task without some var, like ansible_python_interpreter
+##
+
+## Debian-related
+## python3 is needed for firewalld bindings
+ansible_python_interpreter: /usr/bin/python3
+
+playbook_vagrant_base: debian/stretch64
+
+# openjdk & debian - see 00-igloo-private.yml
+playbook_java_version: 8
+playbook_java_package: openjdk-8-jre
+playbook_java_key: "{{ playbook_java_package }}"
+
+_playbook_java_runtime_openjdk:
+  packaging: package
+  package: "{{ playbook_java_package }}"
+  java_home: /usr/lib/jvm/java-{{ playbook_java_version }}-openjdk-amd64
+  key: "{{ playbook_java_key }}"
