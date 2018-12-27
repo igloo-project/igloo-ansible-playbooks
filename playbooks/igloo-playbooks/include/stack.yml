@@ -20,6 +20,8 @@
     - role: httpd
       httpd_step_install: yes
       httpd_step_configuration: no
+      become: true
+      become_user: root
 
     - role: postgresql
       become: true
