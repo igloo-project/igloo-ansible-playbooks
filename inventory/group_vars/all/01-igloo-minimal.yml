@@ -35,3 +35,16 @@ playbook_smtp_host: localhost
 
 ## override with group_vars
 playbook_igloo_profile: qualification
+
+## authorized keys to add
+playbook_ssh_authorized_keys: []
+playbook_ssh_all_authorized_keys: {}
+
+## users format
+## (playbook_ssh_authorized_keys contains a list of key from this dict)
+#playbook_ssh_all_authorized_keys:
+#   username_key:
+#     - name: firstname lastname
+#       username: login
+#       ssh_key: ssh-rsa AAAAB3N...nMkvsRf9iXNX email@domain.com
+
