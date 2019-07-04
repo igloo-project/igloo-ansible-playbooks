@@ -29,7 +29,7 @@
           uid: 3000
           createhome: yes
 
-      - name: kobalt user groups
+      - name: user groups
         user:
           name: "{{ playbook_remote_user }}"
           groups: "users,{{ playbook_remote_user }}"

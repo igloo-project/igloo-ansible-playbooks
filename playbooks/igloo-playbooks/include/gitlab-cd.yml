@@ -1,0 +1,13 @@
+---
+
+- hosts: "{{ common_hosts }}"
+
+  roles:
+
+    - role: delivery
+      delivery_application_war_src: "{{ playbook_gitlab_cd_war_location }}"
+      delivery_application_war_remote_src: no
+      delivery_application_user: "{{ playbook_remote_user }}"
+      delivery_tomcat_service: "tomcat@{{ playbook_application_name }}"
+      delivery_tomcat_catalina_base: "{{ playbook_application_tomcat_path }}"
+      delivery_context_name: "{{ playbook_context_name }}"
