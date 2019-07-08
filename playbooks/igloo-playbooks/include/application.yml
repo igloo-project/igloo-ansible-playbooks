@@ -10,6 +10,7 @@
       config_properties: "{{ playbook_config_properties }}"
       become: true
       become_user: root
+      tags: config
 
     - role: war
       war_application_war_src: "{{ playbook_local_git_project }}/{{ playbook_maven_folder }}{{ playbook_local_git_war_path }}"
@@ -20,3 +21,4 @@
       war_context_name: "{{ playbook_context_name }}"
       become: true
       become_user: root
+      tags: deploy-war

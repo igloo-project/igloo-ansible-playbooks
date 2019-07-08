@@ -46,3 +46,4 @@
       delegate_to: localhost
       run_once: true
       when: playbook_build_project
+      tags: deploy-war

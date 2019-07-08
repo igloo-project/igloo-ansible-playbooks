@@ -42,23 +42,27 @@
     - role: firewall
       become: true
       become_user: root
+      tags: firewall
 
     - role: httpd
       httpd_step_install: yes
       httpd_step_configuration: no
       become: true
       become_user: root
+      tags: httpd
 
     - role: postgresql
       become: true
       become_user: root
       postgresql_versions:
         - "9.6"
+      tags: postgresql
 
     - role: filesystem
       filesystem_application_name: "{{ playbook_application_name }}"
       filesystem_application_user: "{{ playbook_remote_user }}"
       filesystem_application_folders: "{{ playbook_application_folders }}"
+      tags: filesystem
 
     - role: java
       become: true
@@ -67,6 +71,9 @@
       java_runtime_path: /data/opt
       java_results_var: jdks
       java_runtimes: "{{ playbook_java_runtimes }}"
+      tags:
+        - java
+        - tomcat
 
     - role: ssl_selfsigned
       become: true
@@ -76,6 +83,7 @@
       ssl_selfsigned_certificate: "{{ playbook_ssl_certificate }}"
       ssl_selfsigned_key: "{{ playbook_ssl_key }}"
       when: playbook_ssl_selfsigned_certs
+      tags: httpd
 
     - role: httpd
       become: true
@@ -89,6 +97,7 @@
       httpd_ssl_cacertificate: "{{ playbook_httpd_ssl_cacertificate }}"
       httpd_context_name: "{{ playbook_context_name }}"
       httpd_ajp_port: "{{ playbook_tomcat_ajp_port }}"
+      tags: httpd
 
     - role: postgresql_cluster
       become: true
@@ -109,6 +118,7 @@
               databases:
                 - name: "{{ playbook_postgresql_database }}"
                   privileges: CONNECT,CREATE
+      tags: postgresql
 
     - role: tomcat
       become: true
@@ -129,3 +139,4 @@
           ajp_max_threads: "{{ playbook_tomcat_ajp_max_threads }}"
           http_max_threads: "{{ playbook_tomcat_http_max_threads }}"
           shutdown_port: "{{ playbook_tomcat_shutdown_port }}"
+      tags: tomcat
