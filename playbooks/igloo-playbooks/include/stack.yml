@@ -55,7 +55,7 @@
       become: true
       become_user: root
       postgresql_versions:
-        - "9.6"
+        - "{{ playbook_postgresql_version }}"
       tags: postgresql
 
     - role: filesystem
@@ -104,8 +104,8 @@
       become_user: root
       postgresql_cluster_clusters:
         - name: application
-          path: /data/services/pgsql/9.6/data
-          postgresql_version: "9.6"
+          path: /data/services/pgsql/{{ playbook_postgresql_version }}/data
+          postgresql_version: "{{ playbook_postgresql_version }}"
           port: "{{ playbook_postgresql_port }}"
           databases:
             - name: "{{ playbook_postgresql_database }}"

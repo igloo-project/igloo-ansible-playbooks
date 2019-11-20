@@ -23,6 +23,10 @@ playbook_httpd_ssl_certificate: "{{ playbook_ssl_certificate }}"
 playbook_httpd_ssl_key: "{{ playbook_ssl_key }}"
 playbook_httpd_ssl_cacertificate: "{{ playbook_ssl_cacertificate }}"
 
+## override with recent versions
+playbook_java_version: "1.8.0"
+playbook_postgresql_version: "9.6"
+
 ## performance related configuration - keep default (commented) if possible
 # playbook_tomcat_max_threads: 15
 # playbook_postgresql_maxPoolSize: 30
