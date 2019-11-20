@@ -4,6 +4,9 @@
 ansible_user: vagrant
 ansible_ssh_common_args: "-F {{ playbook_vagrant_path }}/{{ playbook_vagrant_alias }}/ssh_config"
 
+## do not use a specific host name
+playbook_front_server_name: "{{ inventory_hostname }}"
+
 ## igloo-ansible-playbooks configuration
 playbook_is_vagrant_host: true
 playbook_environment: development
