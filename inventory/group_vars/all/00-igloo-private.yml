@@ -68,6 +68,8 @@ playbook_local_java_home: "{{ '~/Documents/apps/jdk-8' | expanduser }}"
 playbook_application_path: /data/services/web/{{ playbook_application_name }}
 
 ## tomcat configuration
+playbook_tomcat_xmx: 1024m
+playbook_tomcat_xms: 1024m
 playbook_tomcat_ajp_port: 8009
 playbook_tomcat_http_port: 8080
 playbook_tomcat_shutdown_port: 8005
