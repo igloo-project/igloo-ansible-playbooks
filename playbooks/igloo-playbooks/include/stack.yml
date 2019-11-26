@@ -120,6 +120,23 @@
                   privileges: CONNECT,CREATE
       tags: postgresql
 
+    - role: glowroot_agent
+      glowroot_agent_version: "{{ playbook_glowroot_agent_version }}"
+      glowroot_agent_download_target_path: "{{ playbook_glowroot_agent_download_target_path }}"
+      glowroot_agent_install_target_path: "{{ playbook_glowroot_agent_install_target_path }}"
+      glowroot_config_agent_id: "{{ playbook_glowroot_config_agent_id }}"
+      # process running glowroot perform following actions in glowroot dir :
+      # - writes config.json
+      # - writes in tmp dir
+      # - read glowroot.properties file
+      glowroot_agent_user: "{{ playbook_remote_user }}"
+      glowroot_agent_group: "{{ playbook_remote_user }}"
+      glowroot_config_collector_address: "{{ playbook_glowroot_config_collector_address }}"
+      glowroot_config_log_dir: "{{ playbook_glowroot_config_log_dir }}"
+
+      tags: glowroot
+      when: playbook_glowroot_enabled
+
     - role: tomcat
       become: true
       become_user: root
@@ -130,7 +147,9 @@
       tomcat_default_java_home: "{{ jdks[playbook_java_key].path }}"
       tomcat_timeout_stop: 30s
       tomcat_download_target_path: "{{ playbook_download_target_path }}"
-      tomcat_default_extra_opts: "{{ '-Digloo.profile=' + playbook_igloo_profile if playbook_igloo_profile is defined and playbook_igloo_profile else none }}"
+      tomcat_default_extra_opts: >-
+        {{ ('-javaagent:' + playbook_glowroot_jar) if playbook_glowroot_enabled else '' }}
+        {{ ('-Digloo.profile=' + playbook_igloo_profile) if playbook_igloo_profile is defined and playbook_igloo_profile else none }}
       tomcat_catalina_bases:
         - name: "{{ playbook_application_name }}"
           path: "{{ playbook_application_tomcat_path }}"

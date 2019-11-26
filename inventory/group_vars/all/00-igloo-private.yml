@@ -146,3 +146,12 @@ playbook_java_runtime: |
 
 playbook_java_runtimes:
   - "{{ playbook_java_runtime }}"
+
+playbook_glowroot_enabled: false
+playbook_glowroot_agent_version: "0.13.5"
+playbook_glowroot_agent_download_target_path: "{{ playbook_download_target_path }}"
+playbook_glowroot_agent_install_target_path: /data/opt/
+playbook_glowroot_config_log_dir: /data/log/glowroot/
+playbook_glowroot_jar: "{{ playbook_glowroot_agent_install_target_path }}glowroot/glowroot.jar"
+# playbook_glowroot_config_agent_id: TO OVERRIDE
+# playbook_glowroot_config_collector_address: TO OVERRIDE

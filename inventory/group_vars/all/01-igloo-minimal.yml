@@ -26,6 +26,13 @@ playbook_httpd_ssl_cacertificate: "{{ playbook_ssl_cacertificate }}"
 ## override with recent versions
 playbook_java_version: "1.8.0"
 playbook_postgresql_version: "9.6"
+## enable and set specific values if you want to use glowroot agent
+# playbook_glowroot_enabled: true
+# playbook_glowroot_config_agent_id: Application::{{ inventory_hostname }}
+# playbook_glowroot_config_collector_address: <Glowroot collector address>
+
+## keep commented to use defaults (preferred)
+# playbook_glowroot_agent_version: "0.13.5"
 
 ## environment related configuration - please override
 # playbook_tomcat_xmx: 1024m
@@ -55,4 +62,3 @@ playbook_ssh_all_authorized_keys: {}
 #     - name: firstname lastname
 #       username: login
 #       ssh_key: ssh-rsa AAAAB3N...nMkvsRf9iXNX email@domain.com
-
