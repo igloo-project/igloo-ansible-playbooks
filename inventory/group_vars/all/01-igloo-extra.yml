@@ -64,3 +64,6 @@
 
 ## configuration.properties
 # playbook_config_properties: {}
+
+## allow to skip firewall configuration
+# playbook_firewall_managed: false

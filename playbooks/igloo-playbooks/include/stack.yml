@@ -43,6 +43,7 @@
       become: true
       become_user: root
       tags: firewall
+      when: playbook_firewall_managed | default(True)
 
     - role: httpd
       httpd_step_install: yes
