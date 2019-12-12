@@ -67,3 +67,5 @@
 
 ## allow to skip firewall configuration
 # playbook_firewall_managed: false
+## allow to skip httpd vhost configuration
+# playbook_httpd_manage_vhost_configuration: false
