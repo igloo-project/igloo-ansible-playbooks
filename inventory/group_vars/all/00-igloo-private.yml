@@ -45,6 +45,7 @@ playbook_ssl_cacertificate: "{{ playbook_ssl_certificate }}"
 playbook_httpd_ssl_certificate: "{{ playbook_ssl_certificate }}"
 playbook_httpd_ssl_key: "{{ playbook_ssl_key }}"
 playbook_httpd_ssl_cacertificate: "{{ playbook_ssl_cacertificate }}"
+playbook_httpd_manage_vhost_configuration: true
 
 ## application build, playbook_build_project=true only vars
 ## detect if we are building basic-application

@@ -98,6 +98,7 @@
       httpd_ssl_cacertificate: "{{ playbook_httpd_ssl_cacertificate }}"
       httpd_context_name: "{{ playbook_context_name }}"
       httpd_ajp_port: "{{ playbook_tomcat_ajp_port }}"
+      httpd_manage_vhost_configuration: "{{ playbook_httpd_manage_vhost_configuration }}"
       tags: httpd
 
     - role: postgresql_cluster
