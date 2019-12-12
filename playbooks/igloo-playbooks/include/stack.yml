@@ -105,7 +105,7 @@
       become: true
       become_user: root
       postgresql_cluster_clusters:
-        - name: application
+        - name: "{{ playbook_postgresql_service_suffix }}"
           path: /data/services/pgsql/{{ playbook_postgresql_version }}/data
           postgresql_version: "{{ playbook_postgresql_version }}"
           port: "{{ playbook_postgresql_port }}"

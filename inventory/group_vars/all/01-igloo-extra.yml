@@ -59,6 +59,8 @@
 ## postgresql configuration
 ## (default database name based on application's name)
 # playbook_postgresql_schema: "{{ playbook_postgresql_user }}"
+## override suffix for systemd service name
+# playbook_postgresql_service_suffix: application
 # playbook_postgresql_user: "{{ _playbook_application_name_database }}"
 # playbook_postgresql_password: "{{ _playbook_application_name_database }}"
 
