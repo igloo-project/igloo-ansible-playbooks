@@ -142,12 +142,12 @@
     - role: tomcat
       become: true
       become_user: root
-      tomcat_version: 9.0.10
-      tomcat_checksum: sha512:ecdee920fcb75bf30cd87c350e0732e8fa566911cd16cf2759689edd324ebac911c0d154e79ffc67e948b29eacc49c88dadc5954383d3c4af2fdb952f3d1c371
-      tomcat_dest: /data/opt/tomcat-9.0.10
+      tomcat_version: "{{ playbook_tomcat_version }}"
+      tomcat_checksum: "{{ playbook_tomcat_checksum }}"
+      tomcat_dest: /data/opt/tomcat-{{ playbook_tomcat_version }}
       tomcat_default_user: "{{ playbook_remote_user }}"
       tomcat_default_java_home: "{{ jdks[playbook_java_key].path }}"
-      tomcat_timeout_stop: 30s
+      tomcat_timeout_stop: "{{ playbook_tomcat_timeout_stop }}"
       tomcat_download_target_path: "{{ playbook_download_target_path }}"
       tomcat_default_extra_opts: >-
         {{ ('-javaagent:' + playbook_glowroot_jar) if playbook_glowroot_enabled else '' }}

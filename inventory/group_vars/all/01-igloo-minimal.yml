@@ -26,6 +26,8 @@ playbook_httpd_ssl_cacertificate: "{{ playbook_ssl_cacertificate }}"
 ## override with recent versions
 playbook_java_version: "1.8.0"
 playbook_postgresql_version: "9.6"
+playbook_tomcat_version: "9.0.10"
+playbook_tomcat_checksum: sha512:ecdee920fcb75bf30cd87c350e0732e8fa566911cd16cf2759689edd324ebac911c0d154e79ffc67e948b29eacc49c88dadc5954383d3c4af2fdb952f3d1c371
 ## enable and set specific values if you want to use glowroot agent
 # playbook_glowroot_enabled: true
 # playbook_glowroot_config_agent_id: Application::{{ inventory_hostname }}
