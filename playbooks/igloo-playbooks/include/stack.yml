@@ -40,6 +40,9 @@
 
   roles:
     - role: firewall
+      firewall_skip_ssh: "{{ playbook_firewall_skip_ssh }}"
+      firewall_skip_http: "{{ playbook_firewall_skip_http }}"
+      firewall_skip_https: "{{ playbook_firewall_skip_https }}"
       become: true
       become_user: root
       tags: firewall

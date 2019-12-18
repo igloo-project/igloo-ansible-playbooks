@@ -163,3 +163,9 @@ playbook_glowroot_base: "/data/services/glowroot"
 playbook_glowroot_conf_dir: "{{ playbook_glowroot_base }}/conf"
 # playbook_glowroot_config_agent_id: TO OVERRIDE
 # playbook_glowroot_config_collector_address: TO OVERRIDE
+
+# do not override external settings
+playbook_firewall_skip_ssh: true
+# by default, allow playbook to enable public http(s) access
+playbook_firewall_skip_http: false
+playbook_firewall_skip_https: false

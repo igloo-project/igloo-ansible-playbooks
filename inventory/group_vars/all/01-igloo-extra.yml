@@ -69,5 +69,10 @@
 
 ## allow to skip firewall configuration
 # playbook_firewall_managed: false
+## re-enable firewall service configuration by switching to false
+# playbook_firewall_skip_ssh: true
+## prevent firewall service configuration by switching to true
+# playbook_firewall_skip_http: false
+# playbook_firewall_skip_https: false
 ## allow to skip httpd vhost configuration
 # playbook_httpd_manage_vhost_configuration: false
