@@ -158,5 +158,8 @@ playbook_glowroot_agent_download_target_path: "{{ playbook_download_target_path 
 playbook_glowroot_agent_install_target_path: /data/opt/
 playbook_glowroot_config_log_dir: /data/log/glowroot/
 playbook_glowroot_jar: "{{ playbook_glowroot_agent_install_target_path }}glowroot/glowroot.jar"
+# for back-compatibility; switched to true for new projects
+playbook_glowroot_base: "/data/services/glowroot"
+playbook_glowroot_conf_dir: "{{ playbook_glowroot_base }}/conf"
 # playbook_glowroot_config_agent_id: TO OVERRIDE
 # playbook_glowroot_config_collector_address: TO OVERRIDE
