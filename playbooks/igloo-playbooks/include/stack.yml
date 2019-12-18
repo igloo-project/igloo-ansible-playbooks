@@ -138,13 +138,7 @@
       glowroot_agent_group: "{{ playbook_remote_user }}"
       glowroot_config_collector_address: "{{ playbook_glowroot_config_collector_address }}"
       glowroot_config_log_dir: "{{ playbook_glowroot_config_log_dir }}"
-      glowroot_bases:
-        - path: /data/services/glowroot
-          owner: "{{ playbook_remote_user }}"
-          group: "{{ playbook_remote_user }}"
-          agent_id: "{{ playbook_glowroot_config_agent_id }}"
-          collector_address: "{{ playbook_glowroot_config_collector_address }}"
-          log_path: "{{ playbook_glowroot_config_log_dir }}"
+      glowroot_config_base_dir: /data/services/glowroot
 
       tags: glowroot
       when: playbook_glowroot_enabled
