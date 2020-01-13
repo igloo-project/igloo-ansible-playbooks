@@ -80,4 +80,6 @@
 # playbook_httpd_conf_rewrites: |
 #   RewriteEngine On
 #   RewriteRule .* https://%{SERVER_NAME}%{REQUEST_URI} [R,L]
-
+## allow to modify api root endpoint; this installs specific httpd
+## configuration for API (like ProxyOverrideError Off)
+# playbook_httpd_api_endpoint: /api

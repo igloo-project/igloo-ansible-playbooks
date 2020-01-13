@@ -103,6 +103,7 @@
       httpd_ajp_port: "{{ playbook_tomcat_ajp_port }}"
       httpd_manage_vhost_configuration: "{{ playbook_httpd_manage_vhost_configuration }}"
       httpd_conf_rewrites: "{{ playbook_httpd_conf_rewrites }}"
+      httpd_api_endpoint: "{{ playbook_httpd_api_endpoint }}"
       tags: httpd
 
     - role: postgresql_cluster
