@@ -47,6 +47,11 @@ playbook_httpd_ssl_key: "{{ playbook_ssl_key }}"
 playbook_httpd_ssl_cacertificate: "{{ playbook_ssl_cacertificate }}"
 playbook_httpd_manage_vhost_configuration: true
 
+playbook_httpd_conf_rewrites: |
+  RewriteEngine On
+  RewriteRule .* https://%{SERVER_NAME}%{REQUEST_URI} [R,L]
+playbook_httpd_api_endpoint: /api
+
 ## application build, playbook_build_project=true only vars
 ## detect if we are building basic-application
 playbook_maven_folder: "{{ 'basic-application/' if playbook_application_name == 'basic-application' else '' }}"
