@@ -77,7 +77,8 @@
 ## allow to skip httpd vhost configuration
 # playbook_httpd_manage_vhost_configuration: false
 ## allow to use custom rewrite rules; whole block must be rewritten
-# playbook_httpd_conf_rewrites: |
+# playbook_httpd_conf_https_rewrites: ""
+# playbook_httpd_conf_http_rewrites: |
 #   RewriteEngine On
 #   RewriteRule .* https://%{SERVER_NAME}%{REQUEST_URI} [R,L]
 ## allow to modify api root endpoint; this installs specific httpd

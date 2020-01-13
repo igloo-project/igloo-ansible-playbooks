@@ -47,9 +47,10 @@ playbook_httpd_ssl_key: "{{ playbook_ssl_key }}"
 playbook_httpd_ssl_cacertificate: "{{ playbook_ssl_cacertificate }}"
 playbook_httpd_manage_vhost_configuration: true
 
-playbook_httpd_conf_rewrites: |
+playbook_httpd_conf_http_rewrites: |
   RewriteEngine On
   RewriteRule .* https://%{SERVER_NAME}%{REQUEST_URI} [R,L]
+playbook_httpd_conf_https_rewrites: ""
 playbook_httpd_api_endpoint: /api
 
 ## application build, playbook_build_project=true only vars
