@@ -19,6 +19,9 @@ playbook_igloo_profile: MINIMAL
 playbook_context_name: ''
 ## user for tomcat process
 playbook_remote_user: tomcat
+playbook_remote_user_uid: 3000
+playbook_remote_group: "{{ playbook_remote_user }}"
+playbook_remote_group_gid: "{{ playbook_remote_user_uid }}"
 ## use inventory and group_vars to override by environment
 playbook_project_branch: master
 ## manage folders creation
@@ -42,6 +45,7 @@ playbook_httpd_ssl_certificate: "{{ playbook_ssl_certificate }}"
 playbook_httpd_ssl_key: "{{ playbook_ssl_key }}"
 playbook_httpd_ssl_cacertificate: "{{ playbook_ssl_cacertificate }}"
 playbook_httpd_manage_vhost_configuration: true
+playbook_httpd_servers_aliases: []
 
 playbook_httpd_conf_http_rewrites: |
   RewriteEngine On

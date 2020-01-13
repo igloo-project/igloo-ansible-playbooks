@@ -84,3 +84,5 @@
 ## allow to modify api root endpoint; this installs specific httpd
 ## configuration for API (like ProxyOverrideError Off)
 # playbook_httpd_api_endpoint: /api
+## add httpd aliases
+# playbook_httpd_servers_aliases: []

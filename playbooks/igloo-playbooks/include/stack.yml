@@ -22,18 +22,18 @@
       - name: group
         group:
           name: "{{ playbook_remote_user }}"
-          gid: 3000
+          gid: "{{ playbook_remote_group_gid }}"
 
       - name: user create
         user:
           name: "{{ playbook_remote_user }}"
-          uid: 3000
+          uid: "{{ playbook_remote_user_uid }}"
           createhome: yes
 
       - name: user groups
         user:
           name: "{{ playbook_remote_user }}"
-          groups: "users,{{ playbook_remote_user }}"
+          groups: "users,{{ playbook_remote_group }}"
           append: yes
 
       become: true
@@ -84,7 +84,7 @@
       become: true
       become_user: root
       ssl_selfsigned_cn: "{{ playbook_front_server_name }}"
-      ssl_selfsigned_aliases: []
+      ssl_selfsigned_aliases: "{{ playbook_httpd_servers_aliases }}"
       ssl_selfsigned_certificate: "{{ playbook_ssl_certificate }}"
       ssl_selfsigned_key: "{{ playbook_ssl_key }}"
       when: playbook_ssl_selfsigned_certs
@@ -94,7 +94,7 @@
       become: true
       become_user: root
       httpd_server_name: "{{ playbook_front_server_name }}"
-      httpd_server_aliases: []
+      httpd_server_aliases: "{{ playbook_httpd_servers_aliases }}"
       httpd_application_name: "{{ playbook_application_name }}"
       httpd_documentroot: "{{ playbook_application_path }}/site"
       httpd_ssl_certificate: "{{ playbook_httpd_ssl_certificate }}"
