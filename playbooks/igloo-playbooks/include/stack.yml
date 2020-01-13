@@ -17,6 +17,7 @@
           owner: root
           group: root
           mode: u=rwx,g=,o=
+        when: playbook_ssl_selfsigned_certs
 
       - name: group
         group:
