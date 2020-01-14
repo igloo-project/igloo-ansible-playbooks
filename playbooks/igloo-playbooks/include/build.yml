@@ -6,15 +6,6 @@
 
 - hosts: "{{ common_hosts }}"
 
-  pre_tasks:
-    - name: maven_artifact requisites
-      package:
-        name: python-lxml
-      become: yes
-      become_user: root
-      delegate_to: localhost
-      run_once: yes
-
   roles:
     - role: maven_build
       mb_git_repository: "{{ playbook_igloo_git_url }}"
