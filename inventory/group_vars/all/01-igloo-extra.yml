@@ -54,6 +54,7 @@
 # playbook_tomcat_ajp_port: 8009
 # playbook_tomcat_http_port: 8080
 # playbook_tomcat_shutdown_port: 8005
+# playbook_tomcat_jmx_port: 9010
 # playbook_tomcat_extra_opts: "{{ '-Digloo.profile=' + playbook_igloo_profile if playbook_igloo_profile is defined and playbook_igloo_profile else none }}"
 
 ## postgresql configuration

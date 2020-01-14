@@ -83,6 +83,7 @@ playbook_tomcat_xms: 1024m
 playbook_tomcat_ajp_port: 8009
 playbook_tomcat_http_port: 8080
 playbook_tomcat_shutdown_port: 8005
+playbook_tomcat_jmx_port: 9010
 playbook_tomcat_ajp_max_threads: "{{ playbook_tomcat_max_threads }}"
 playbook_tomcat_http_max_threads: "{{ playbook_tomcat_max_threads }}"
 playbook_tomcat_max_threads: 15

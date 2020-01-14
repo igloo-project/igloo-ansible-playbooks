@@ -171,4 +171,5 @@
           shutdown_port: "{{ playbook_tomcat_shutdown_port }}"
           xmx: "{{ playbook_tomcat_xmx }}"
           xms: "{{ playbook_tomcat_xms }}"
+          jmx_port: "{{ playbook_tomcat_jmx_port }}"
       tags: tomcat
