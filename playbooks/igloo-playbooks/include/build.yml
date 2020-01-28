@@ -22,6 +22,7 @@
       delegate_to: localhost
       run_once: true
       when: playbook_build_igloo
+      tags: deploy-war
 
     - role: maven_build
       mb_git_repository: "{{ playbook_project_git_url }}"
