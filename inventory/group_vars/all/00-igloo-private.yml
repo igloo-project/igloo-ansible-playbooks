@@ -36,6 +36,9 @@ playbook_vagrant_alias: "{{ inventory_hostname }}"
 ## use command-line args to override
 playbook_build_igloo: false
 playbook_build_project: false
+## force rebuild, even if no change is detected
+playbook_rebuild_igloo: false
+playbook_rebuild_project: false
 
 ## ssl configuration
 playbook_ssl_certificate: /etc/httpd/certs/{{ playbook_application_name }}.crt
