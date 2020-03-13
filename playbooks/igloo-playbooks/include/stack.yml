@@ -160,6 +160,7 @@
       tomcat_default_extra_opts: >-
         {{ ('-javaagent:' + playbook_glowroot_jar) if playbook_glowroot_enabled else '' }}
         {{ ('-Dglowroot.conf.dir=' + playbook_glowroot_conf_dir) if playbook_glowroot_enabled else '' }}
+        -Digloo.applicationName={{ playbook_application_name }}
         {{ ('-Digloo.profile=' + playbook_igloo_profile) if playbook_igloo_profile is defined and playbook_igloo_profile else none }}
       tomcat_catalina_bases:
         - name: "{{ playbook_application_name }}"
