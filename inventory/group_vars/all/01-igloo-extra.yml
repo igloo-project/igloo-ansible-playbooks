@@ -68,6 +68,8 @@
 ## configuration.properties
 # playbook_config_properties: {}
 
+## allow to skip logrotate configuration
+# playbook_logrotate_managed: false
 ## allow to skip firewall configuration
 # playbook_firewall_managed: false
 ## re-enable firewall service configuration by switching to false

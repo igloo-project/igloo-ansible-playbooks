@@ -108,6 +108,16 @@
       httpd_api_endpoint: "{{ playbook_httpd_api_endpoint }}"
       tags: httpd
 
+    - role: logrotate
+      become: yes
+      become_user: root
+      logrotate_user: "{{ playbook_remote_user }}"
+      logrotate_group: "{{ playbook_remote_user }}"
+      logrotate_application_name: "{{ playbook_application_name }}"
+      tags: logrotate
+      when: playbook_logrotate_managed | default(True)
+
+
     - role: postgresql_cluster
       become: true
       become_user: root
