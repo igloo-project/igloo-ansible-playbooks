@@ -78,8 +78,6 @@ playbook_local_java_home: "{{ '~/Documents/apps/jdk-8' | expanduser }}"
 playbook_application_path: /data/services/web/{{ playbook_application_name }}
 
 ## tomcat configuration
-playbook_tomcat_version: "9.0.10"
-playbook_tomcat_checksum: sha512:ecdee920fcb75bf30cd87c350e0732e8fa566911cd16cf2759689edd324ebac911c0d154e79ffc67e948b29eacc49c88dadc5954383d3c4af2fdb952f3d1c371
 playbook_tomcat_timeout_stop: 30s
 playbook_tomcat_xmx: 1024m
 playbook_tomcat_xms: 1024m
