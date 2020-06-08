@@ -10,6 +10,6 @@
   roles:
     - role: powo.utils
     - role: epel
-      when: ansible_os_family == 'Redhat'
+      when: ansible_os_family == 'RedHat'
       become: true
       become_user: root
