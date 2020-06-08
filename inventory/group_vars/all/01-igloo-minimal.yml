@@ -28,6 +28,15 @@ playbook_java_version: "1.8.0"
 playbook_postgresql_version: "9.6"
 playbook_tomcat_version: "9.0.30"
 playbook_tomcat_checksum: sha512:40bf428a534816317e5e8732b679e6d73f6ed977aab4ac5e2b9eaf1eb087eaa68a18b0fd3da8c39ca4b96f5b6fd919dec84517abba0d5e797285ade934a92990
+## customize postgresql init
+## install postgis and create extension
+# playbook_postgresql_postgis: true
+# playbook_postgresql_postgis_package: postgis30_{{ playbook_postgresql_version | replace('.', '') }}
+# playbook_postgresql_postgis_schema: postgis
+## set database owner search_path, example '"$user", postgis, public' (null ignore search_path configuration)
+## value must be equals to the one displayed by "show search_path;" query
+## use null to ignore search_path configuration
+# playbook_postgresql_search_path: null
 ## enable and set specific values if you want to use glowroot agent
 # playbook_glowroot_enabled: true
 # playbook_glowroot_config_agent_id: Application::{{ inventory_hostname }}

@@ -129,11 +129,15 @@
           databases:
             - name: "{{ playbook_postgresql_database }}"
               owner: "{{ playbook_postgresql_user }}"
+              postgis: "{{ playbook_postgresql_postgis | default(False) }}"
+              postgis_package: "{{ playbook_postgresql_postgis_package | default(None) }}"
+              postgis_schema: "{{ playbook_postgresql_postgis_schema | default(None) }}"
               schemas:
                 - "{{ playbook_postgresql_user }}"
           users:
             - username: "{{ playbook_postgresql_user }}"
               password: "{{ playbook_postgresql_password }}"
+              search_path: "{{ playbook_postgresql_search_path | default(None) }}"
               databases:
                 - name: "{{ playbook_postgresql_database }}"
                   privileges: CONNECT,CREATE
