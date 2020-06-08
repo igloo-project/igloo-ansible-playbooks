@@ -177,3 +177,5 @@ playbook_firewall_skip_ssh: true
 # by default, allow playbook to enable public http(s) access
 playbook_firewall_skip_http: false
 playbook_firewall_skip_https: false
+
+x_selinux_handle: "{{ ansible_selinux is defined and ansible_selinux == 'enabled' }}"
