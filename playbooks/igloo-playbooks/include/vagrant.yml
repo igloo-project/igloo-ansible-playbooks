@@ -27,6 +27,7 @@
           ignore_errors: yes
           register: check_locale
           changed_when: check_locale.stdout == ""
+          check_mode: false
 
         - name: locales · reinstall glibc-common
           shell: "yum -y reinstall glibc-common"
