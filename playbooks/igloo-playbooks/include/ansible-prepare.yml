@@ -5,13 +5,6 @@
 ##
 
 - hosts: "{{ common_hosts }}"
-  pre_tasks:
-    - name: maven_artifact requisites
-      package:
-        name: "{{ 'python3-lxml' if ansible_os_family == 'RedHat' and ansible_distribution_major_version == '8' else 'python-lxml' }}"
-      become: true
-      become_user: root
-
   roles:
     - role: powo.utils
     # TODO: handle become at role level
