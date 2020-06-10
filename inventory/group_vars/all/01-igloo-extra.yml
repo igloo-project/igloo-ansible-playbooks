@@ -68,6 +68,9 @@
 ## configuration.properties
 # playbook_config_properties: {}
 
+## allow to skip static deployment, and configure archive directory
+# playbook_static_skip: false
+# playbook_static_archive: "{{ inventory_dir }}/../{{ application_name }}-ressources-statiques.tar.gz"
 ## allow to skip logrotate configuration
 # playbook_logrotate_managed: false
 ## allow to skip firewall configuration

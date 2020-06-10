@@ -113,6 +113,11 @@
       httpd_listens: "{{ playbook_httpd_listens | default([]) }}"
       tags: httpd
 
+    - role: static_contents
+      static_archive: "{{ playbook_static_archive }}"
+      static_target: "{{ playbook_application_path }}/site"
+      when: static_deploy | default(False)
+
     - role: logrotate
       become: yes
       become_user: root
@@ -149,13 +154,13 @@
       tags: postgresql
 
     - role: db_restore
+      restore_dump_file: "{{ playbook_restore_dump_file | default('') }}"
+      restore_dump_file_remote_src: "{{ playbook_restore_dump_file_remote_src | default(False) }}"
       # skipped by default
       # set restore_dump=true to activate
       # set restore_dump_skip_confirm=true to skip confirmation prompt
       # set restore_dump_ignore_missing=false if you do not want to interrupt
       #                                       on a missing dump
-      # set restore_dump_file to the dump filename
-      # set restore_dump_file_remote_src=true if the file is remote
 
     - role: glowroot_agent
       glowroot_agent_version: "{{ playbook_glowroot_agent_version }}"
