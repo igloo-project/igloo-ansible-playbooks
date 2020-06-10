@@ -148,6 +148,15 @@
                   privileges: CONNECT,CREATE
       tags: postgresql
 
+    - role: db_restore
+      # skipped by default
+      # set restore_dump=true to activate
+      # set restore_dump_skip_confirm=true to skip confirmation prompt
+      # set restore_dump_ignore_missing=false if you do not want to interrupt
+      #                                       on a missing dump
+      # set restore_dump_file to the dump filename
+      # set restore_dump_file_remote_src=true if the file is remote
+
     - role: glowroot_agent
       glowroot_agent_version: "{{ playbook_glowroot_agent_version }}"
       glowroot_agent_download_target_path: "{{ playbook_glowroot_agent_download_target_path }}"
