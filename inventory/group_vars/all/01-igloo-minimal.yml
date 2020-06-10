@@ -23,6 +23,12 @@ playbook_httpd_ssl_certificate: "{{ playbook_ssl_certificate }}"
 playbook_httpd_ssl_key: "{{ playbook_ssl_key }}"
 playbook_httpd_ssl_cacertificate: "{{ playbook_ssl_cacertificate }}"
 
+## override by command line (-e playbook_war=...) or in inventory to target
+## an arbitrary file
+# playbook_war: "{{ playbook_local_git_project }}/{{ playbook_maven_folder }}{{ playbook_local_git_war_path }}"
+## switch to true if you want to deploy a remote war
+# playbook_war_remote_src: false
+
 ## override with recent versions
 playbook_java_version: "1.8.0"
 playbook_postgresql_version: "9.6"

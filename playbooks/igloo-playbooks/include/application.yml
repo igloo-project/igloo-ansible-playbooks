@@ -13,8 +13,8 @@
       tags: config
 
     - role: war
-      war_application_war_src: "{{ playbook_local_git_project }}/{{ playbook_maven_folder }}{{ playbook_local_git_war_path }}"
-      war_application_war_remote_src: no
+      war_application_war_src: "{{ playbook_war }}"
+      war_application_war_remote_src: "{{ playbook_war_remote_src | default(False) }}"
       war_application_user: "{{ playbook_remote_user }}"
       war_tomcat_service: "tomcat@{{ playbook_application_name }}"
       war_tomcat_catalina_base: "{{ playbook_application_tomcat_path }}"

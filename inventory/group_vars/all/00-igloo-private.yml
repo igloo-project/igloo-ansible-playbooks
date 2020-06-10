@@ -26,6 +26,8 @@ playbook_remote_group_gid: "{{ playbook_remote_user_uid }}"
 playbook_project_branch: master
 ## manage folders creation
 playbook_application_folders: []
+playbook_war: "{{ playbook_local_git_project }}/{{ playbook_maven_folder }}{{ playbook_local_git_war_path }}"
+playbook_war_remote_src: false
 
 ## base image for vagrant
 playbook_vagrant_base: centos/7
