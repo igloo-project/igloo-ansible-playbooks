@@ -11,6 +11,7 @@
       vagrant_host: "{{ playbook_vagrant_alias | default(inventory_hostname) }}"
       vagrant_root_path: "{{ playbook_vagrant_path }}"
       delegate_to: localhost
+      when: playbook_is_vagrant_host
 
 - hosts: "{{ common_hosts }}:&vagrant"
   tasks:
