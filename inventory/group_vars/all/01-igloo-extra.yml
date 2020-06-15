@@ -92,3 +92,10 @@
 # playbook_httpd_api_endpoint: /api
 ## add httpd aliases
 # playbook_httpd_servers_aliases: []
+## allow to add extra firewall services
+# playbook_firewall_services:
+#   - port: tcp/4343
+#     state: enabled
+#   - service: smtp
+#     state: enabled
+#     zone: restricted
