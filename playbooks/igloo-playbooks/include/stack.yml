@@ -40,6 +40,11 @@
       become_user: root
 
   roles:
+    - role: locales
+      system_locale: "{{ playbook_system_locale | default('fr_FR.utf8') }}"
+      system_timezone: "{{ playbook_system_timezone | default('Europe/Paris') }}"
+      when: not playbook_locales_skip | default(False)
+
     - role: firewall
       firewall_skip_ssh: "{{ playbook_firewall_skip_ssh }}"
       firewall_skip_http: "{{ playbook_firewall_skip_http }}"

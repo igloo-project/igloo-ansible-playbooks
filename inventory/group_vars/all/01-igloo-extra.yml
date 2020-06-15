@@ -101,3 +101,5 @@
 #     zone: restricted
 ## allow to setup tomcat work/temp clean upon start
 # playbook_tomcat_clean_on_start: false
+## skip system settings (timezone, locale)
+# playbook_locales_skip: false

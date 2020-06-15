@@ -15,6 +15,10 @@ playbook_project_git_url: git@github.com:igloo-project/igloo-parent.git
 ## application public vhost
 playbook_front_server_name: myapp.domain.org
 
+## override if needed
+playbook_system_timezone: Europe/Paris
+playbook_system_locale: fr_FR.UTF-8
+
 ## generate selfsigned certificates
 ## if you use letsencrypt or provided certs, switch to false and configure
 ## playbook_httpd_ssl_* paths
