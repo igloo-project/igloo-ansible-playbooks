@@ -26,6 +26,10 @@ playbook_ssl_selfsigned_certs: true
 playbook_httpd_ssl_certificate: "{{ playbook_ssl_certificate }}"
 playbook_httpd_ssl_key: "{{ playbook_ssl_key }}"
 playbook_httpd_ssl_cacertificate: "{{ playbook_ssl_cacertificate }}"
+# Uncomment to use a robots.txt
+# playbook_httpd_conf_robots_txt: |
+#   User-Agent: *
+#   Disallow: /
 
 ## override by command line (-e playbook_war=...) or in inventory to target
 ## an arbitrary file

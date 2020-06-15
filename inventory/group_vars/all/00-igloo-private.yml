@@ -51,6 +51,8 @@ playbook_httpd_ssl_key: "{{ playbook_ssl_key }}"
 playbook_httpd_ssl_cacertificate: "{{ playbook_ssl_cacertificate }}"
 playbook_httpd_manage_vhost_configuration: true
 playbook_httpd_servers_aliases: []
+# no robots.txt by default
+playbook_httpd_conf_robots_txt: ''
 
 playbook_httpd_conf_http_rewrites: |
   RewriteEngine On
