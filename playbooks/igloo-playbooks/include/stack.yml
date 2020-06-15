@@ -207,4 +207,5 @@
           xmx: "{{ playbook_tomcat_xmx }}"
           xms: "{{ playbook_tomcat_xms }}"
           jmx_port: "{{ playbook_tomcat_jmx_port }}"
+          clean_on_start: "{{ playbook_tomcat_clean_on_start | default(False) }}"
       tags: tomcat
