@@ -202,6 +202,7 @@
         {{ ('-Dglowroot.conf.dir=' + playbook_glowroot_conf_dir) if playbook_glowroot_enabled else '' }}
         -Digloo.applicationName={{ playbook_application_name }}
         {{ ('-Digloo.profile=' + playbook_igloo_profile) if playbook_igloo_profile is defined and playbook_igloo_profile else none }}
+        {{ playbook_tomcat_extra_opts if playbook_tomcat_extra_opts is defined else '' }}
       tomcat_catalina_bases:
         - name: "{{ playbook_application_name }}"
           path: "{{ playbook_application_tomcat_path }}"
