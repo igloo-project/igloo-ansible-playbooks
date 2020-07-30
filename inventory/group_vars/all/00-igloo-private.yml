@@ -45,9 +45,11 @@ playbook_rebuild_project: false
 ## ssl configuration
 playbook_ssl_certificate: /etc/httpd/certs/{{ playbook_application_name }}.crt
 playbook_ssl_key: /etc/httpd/certs/{{ playbook_application_name }}.key
+playbook_ssl_chain: ""
 playbook_ssl_cacertificate: "{{ playbook_ssl_certificate }}"
 playbook_httpd_ssl_certificate: "{{ playbook_ssl_certificate }}"
 playbook_httpd_ssl_key: "{{ playbook_ssl_key }}"
+playbook_httpd_ssl_chain: "{{ playbook_ssl_chain }}"
 playbook_httpd_ssl_cacertificate: "{{ playbook_ssl_cacertificate }}"
 playbook_httpd_manage_vhost_configuration: true
 playbook_httpd_servers_aliases: []
