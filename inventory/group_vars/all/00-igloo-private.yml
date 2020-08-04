@@ -53,8 +53,11 @@ playbook_httpd_ssl_chain: "{{ playbook_ssl_chain }}"
 playbook_httpd_ssl_cacertificate: "{{ playbook_ssl_cacertificate }}"
 playbook_httpd_manage_vhost_configuration: true
 playbook_httpd_servers_aliases: []
+playbook_httpd_source_context_name: "{{ playbook_context_name }}"
 # no robots.txt by default
 playbook_httpd_conf_robots_txt: ''
+# error override enabled by default
+playbook_httpd_conf_error_override: true
 
 playbook_httpd_conf_http_rewrites: |
   RewriteEngine On
