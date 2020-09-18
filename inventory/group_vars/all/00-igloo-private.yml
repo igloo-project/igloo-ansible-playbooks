@@ -30,7 +30,7 @@ playbook_war: "{{ playbook_local_git_project }}/{{ playbook_maven_folder }}{{ pl
 playbook_war_remote_src: false
 
 ## base image for vagrant
-playbook_vagrant_base: centos/7
+playbook_vagrant_base: centos/8
 playbook_vagrant_path: "{{ inventory_dir | dirname }}/run/vagrant"
 ## box alias, may be overriden by host
 playbook_vagrant_alias: "{{ inventory_hostname }}"
