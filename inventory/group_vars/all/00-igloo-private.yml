@@ -116,6 +116,7 @@ playbook_postgresql_postgis: false
 playbook_postgresql_postgis_package: postgis30_{{ playbook_postgresql_version | replace('.', '') }}
 playbook_postgresql_postgis_schema: postgis
 playbook_postgresql_search_path: null
+playbook_postgresql_listen_addresses: localhost
 
 ## SMTP configuration
 playbook_smtp_host: localhost

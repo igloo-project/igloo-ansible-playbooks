@@ -146,6 +146,7 @@
           path: /data/services/pgsql/{{ playbook_postgresql_version }}/data
           postgresql_version: "{{ playbook_postgresql_version }}"
           port: "{{ playbook_postgresql_port }}"
+          listen_addresses: "{{ playbook_postgresql_listen_addresses }}"
           databases:
             - name: "{{ playbook_postgresql_database }}"
               owner: "{{ playbook_postgresql_user }}"
