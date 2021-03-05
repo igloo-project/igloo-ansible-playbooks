@@ -28,6 +28,10 @@ playbook_project_branch: master
 playbook_application_folders: []
 playbook_war: "{{ playbook_local_git_project }}/{{ playbook_maven_folder }}{{ playbook_local_git_war_path }}"
 playbook_war_remote_src: false
+# use true so that gitlab-cd triggers backup before delivery
+# a script performing backup must be available on host
+# see role backup
+playbook_delivery_backup: false
 
 ## base image for vagrant
 playbook_vagrant_base: centos/8

@@ -4,6 +4,9 @@
 
   roles:
 
+    - role: backup
+      when: playbook_delivery_backup | default(False)
+
     - role: delivery
       delivery_application_war_src: "{{ playbook_gitlab_cd_war_location }}"
       delivery_application_war_remote_src: no
