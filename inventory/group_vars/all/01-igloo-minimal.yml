@@ -15,6 +15,9 @@ playbook_project_git_url: git@github.com:igloo-project/igloo-parent.git
 ## application public vhost
 playbook_front_server_name: myapp.domain.org
 
+## install a backup script then enable this feature !
+# playbook_delivery_backup: true
+
 ## override if needed
 playbook_system_timezone: Europe/Paris
 playbook_system_locale: fr_FR.UTF-8
