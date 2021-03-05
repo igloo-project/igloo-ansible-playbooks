@@ -4,8 +4,13 @@
 
   roles:
 
+    # default('true', True) -> if empty string, use default value 'true'
+    # backup if configured in project playbook_delivery_backup
+    # and not skipped with env var ANSIBLE_SKIP_DELIVERY_BACKUP
     - role: backup
-      when: playbook_delivery_backup | default(False)
+      when: >
+        playbook_delivery_backup | default(False)
+        and not (lookup('env', 'ANSIBLE_SKIP_DELIVERY_BACKUP') | default('false', True) | lower in ('1', 'true'))
 
     - role: delivery
       delivery_application_war_src: "{{ playbook_gitlab_cd_war_location }}"
