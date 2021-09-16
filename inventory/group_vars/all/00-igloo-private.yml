@@ -47,10 +47,21 @@ playbook_rebuild_igloo: false
 playbook_rebuild_project: false
 
 ## ssl configuration
-playbook_ssl_certificate: /etc/httpd/certs/{{ playbook_application_name }}.crt
-playbook_ssl_key: /etc/httpd/certs/{{ playbook_application_name }}.key
-playbook_ssl_chain: ""
-playbook_ssl_cacertificate: "{{ playbook_ssl_certificate }}"
+distro_ssl_folder:
+  RedHat: "/etc/httpd"
+  Debian: "/etc/apache2"
+playbook_selfsigned_ssl_certificate: "{{ distro_ssl_folder | distro(vars) }}/certs/{{ playbook_application_name }}.crt"
+playbook_selfsigned_ssl_key: "{{ distro_ssl_folder | distro(vars) }}/certs/{{ playbook_application_name }}.key"
+playbook_selfsigned_ssl_chain: ""
+playbook_selfsigned_ssl_cacertificate: "{{ playbook_ssl_certificate }}"
+playbook_letsencrypt_ssl_certificate: /etc/letsencrypt/live/{{ playbook_front_server_name }}/cert.pem
+playbook_letsencrypt_ssl_key: /etc/letsencrypt/live/{{ playbook_front_server_name }}/privkey.pem
+playbook_letsencrypt_ssl_chain: ""
+playbook_letsencrypt_ssl_cacertificate: /etc/letsencrypt/live/{{ playbook_front_server_name }}/fullchain.pem
+playbook_ssl_certificate: "{{ playbook_selfsigned_ssl_certificate if playbook_ssl_selfsigned_certs else playbook_letsencrypt_ssl_certificate }}"
+playbook_ssl_key: "{{ playbook_selfsigned_ssl_key if playbook_ssl_selfsigned_certs else playbook_letsencrypt_ssl_key }}"
+playbook_ssl_chain: "{{ playbook_selfsigned_ssl_chain if playbook_ssl_selfsigned_certs else playbook_letsencrypt_ssl_chain }}"
+playbook_ssl_cacertificate: "{{ playbook_selfsigned_ssl_cacertificate if playbook_ssl_selfsigned_certs else playbook_letsencrypt_ssl_cacertificate }}"
 playbook_httpd_ssl_certificate: "{{ playbook_ssl_certificate }}"
 playbook_httpd_ssl_key: "{{ playbook_ssl_key }}"
 playbook_httpd_ssl_chain: "{{ playbook_ssl_chain }}"
