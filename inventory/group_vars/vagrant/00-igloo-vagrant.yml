@@ -11,6 +11,8 @@ playbook_front_server_name: "{{ inventory_hostname }}"
 playbook_is_vagrant_host: true
 playbook_environment: development
 playbook_remote_user: tomcat
+## prevent uid clash for ubuntu vm
+playbook_remote_user_uid: 4000
 playbook_ssl_selfsigned_certs: true
 playbook_httpd_ssl_certificate: "/etc/httpd/certs/{{ playbook_application_name }}.crt"
 playbook_httpd_ssl_key: "/etc/httpd/certs/{{ playbook_application_name }}.key"
