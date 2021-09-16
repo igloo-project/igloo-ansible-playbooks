@@ -6,13 +6,13 @@
 ## to perform setup task without some var, like ansible_python_interpreter
 ##
 
-## Debian-related
+## ubuntu-related
 ## python3 is needed for firewalld bindings
 ansible_python_interpreter: /usr/bin/python3
 
-playbook_vagrant_base: debian/buster64
+playbook_vagrant_base: ubuntu/focal64
 
-# openjdk & debian - see 00-igloo-private.yml
+# openjdk & ubuntu - see 00-igloo-private.yml
 playbook_java_version: 11
 playbook_java_package: openjdk-11-jre
 playbook_java_key: "{{ playbook_java_package }}"
