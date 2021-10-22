@@ -129,7 +129,7 @@ playbook_postgresql_maxPoolSize: 30
 playbook_postgresql_user: "{{ _playbook_application_name_database }}"
 playbook_postgresql_password: "{{ _playbook_application_name_database }}"
 playbook_postgresql_postgis: false
-playbook_postgresql_postgis_package: postgis30_{{ playbook_postgresql_version | replace('.', '') }}
+playbook_postgresql_postgis_package: "{{ 'postgis30_' + playbook_postgresql_version | replace('.', '') if ansible_os_family == 'RedHat' else 'postgresql-' + playbook_postgresql_version + '-postgis-3' }}"
 playbook_postgresql_postgis_schema: postgis
 playbook_postgresql_search_path: null
 playbook_postgresql_listen_addresses: localhost
