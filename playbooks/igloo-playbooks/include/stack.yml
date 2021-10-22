@@ -68,11 +68,13 @@
       postgresql_versions:
         - "{{ playbook_postgresql_version }}"
       tags: postgresql
+      when: not playbook_postgresql_skip
 
     - role: filesystem
       filesystem_application_name: "{{ playbook_application_name }}"
       filesystem_application_user: "{{ playbook_remote_user }}"
       filesystem_application_folders: "{{ playbook_application_folders }}"
+      filesystem_postgresql: "{{ not playbook_postgresql_skip }}"
       tags: filesystem
 
     - role: java
@@ -163,10 +165,12 @@
                 - name: "{{ playbook_postgresql_database }}"
                   privileges: CONNECT,CREATE
       tags: postgresql
+      when: not playbook_postgresql_skip
 
     - role: db_restore
       restore_dump_file: "{{ playbook_restore_dump_file | default('') }}"
       restore_dump_file_remote_src: "{{ playbook_restore_dump_file_remote_src | default(False) }}"
+      when: not playbook_postgresql_skip
       # skipped by default
       # set restore_dump=true to activate
       # set restore_dump_skip_confirm=true to skip confirmation prompt

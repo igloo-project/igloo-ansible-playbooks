@@ -58,6 +58,8 @@
 # playbook_tomcat_extra_opts: "{{ '-Digloo.profile=' + playbook_igloo_profile if playbook_igloo_profile is defined and playbook_igloo_profile else none }}"
 
 ## postgresql configuration
+## skip postgresql (external database): set to true
+# playbook_postgresql_skip: false
 ## (default database name based on application's name)
 # playbook_postgresql_schema: "{{ playbook_postgresql_user }}"
 ## override suffix for systemd service name
