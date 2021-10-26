@@ -20,7 +20,7 @@ playbook_front_server_name: myapp.domain.org
 
 ## override if needed
 playbook_system_timezone: Europe/Paris
-playbook_system_locale: fr_FR.UTF-8
+playbook_system_locale: fr_FR.utf8
 
 ## generate selfsigned certificates
 ## if you use letsencrypt or provided certs, switch to false and configure
