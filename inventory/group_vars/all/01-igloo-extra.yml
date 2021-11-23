@@ -94,6 +94,9 @@
 # playbook_httpd_api_endpoint: /api
 ## add httpd aliases
 # playbook_httpd_servers_aliases: []
+## customize proxypass connection
+# playbook_httpd_conf_proxypass_timeout: 3000
+# playbook_httpd_conf_proxypass_ttl: 300
 ## allow to add extra firewall services
 # playbook_firewall_services:
 #   - port: tcp/4343

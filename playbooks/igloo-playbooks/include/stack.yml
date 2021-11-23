@@ -118,6 +118,8 @@
       httpd_conf_http_locations: "{{ playbook_httpd_conf_http_locations | default([]) }}"
       httpd_conf_https_locations: "{{ playbook_httpd_conf_https_locations | default([]) }}"
       httpd_conf_proxypass_unmount: "{{ playbook_httpd_conf_proxypass_unmount | default([]) }}"
+      httpd_conf_proxypass_timeout: "{{ playbook_httpd_conf_proxypass_timeout | default('3000') }}"
+      httpd_conf_proxypass_ttl: "{{ playbook_httpd_conf_proxypass_ttl | default('300') }}"
       httpd_conf_robots_txt: "{{ playbook_httpd_conf_robots_txt }}"
       httpd_conf_error_override: "{{ playbook_httpd_conf_error_override }}"
       httpd_api_endpoint: "{{ playbook_httpd_api_endpoint }}"
