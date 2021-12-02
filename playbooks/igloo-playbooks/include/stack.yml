@@ -113,6 +113,7 @@
       httpd_source_context_name: "{{ playbook_httpd_source_context_name }}"
       httpd_ajp_port: "{{ playbook_tomcat_ajp_port }}"
       httpd_manage_vhost_configuration: "{{ playbook_httpd_manage_vhost_configuration }}"
+      httpd_common_conf: "{{ playbook_httpd_common_conf | default('') }}"
       httpd_conf_http_rewrites: "{{ playbook_httpd_conf_http_rewrites }}"
       httpd_conf_https_rewrites: "{{ playbook_httpd_conf_https_rewrites }}"
       httpd_conf_http_locations: "{{ playbook_httpd_conf_http_locations | default([]) }}"

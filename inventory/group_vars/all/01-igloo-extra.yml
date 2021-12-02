@@ -82,6 +82,8 @@
 ## prevent firewall service configuration by switching to true
 # playbook_firewall_skip_http: false
 # playbook_firewall_skip_https: false
+## add general configuration (cross vhost, in common.conf)
+# playbook_httpd_common_conf:
 ## allow to skip httpd vhost configuration
 # playbook_httpd_manage_vhost_configuration: false
 ## allow to use custom rewrite rules; whole block must be rewritten
