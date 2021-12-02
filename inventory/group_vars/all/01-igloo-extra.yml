@@ -97,6 +97,7 @@
 ## customize proxypass connection
 # playbook_httpd_conf_proxypass_timeout: 3000
 # playbook_httpd_conf_proxypass_ttl: 300
+# playbook_httpd_conf_proxypass_extra:
 ## allow to add extra firewall services
 # playbook_firewall_services:
 #   - port: tcp/4343
