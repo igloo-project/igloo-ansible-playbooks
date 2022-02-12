@@ -90,3 +90,6 @@ playbook_ssh_all_authorized_keys: {}
 #     - name: firstname lastname
 #       username: login
 #       ssh_key: ssh-rsa AAAAB3N...nMkvsRf9iXNX email@domain.com
+
+## check public interface name; override if not eth0
+#firewall_interface: eth0
