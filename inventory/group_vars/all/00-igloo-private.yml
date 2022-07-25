@@ -154,7 +154,9 @@ default_playbook_config_properties: {
   'data.shared-path': '${data.path}',
   'notification.smtp.host': '{{ playbook_smtp_host }}',
   'notification.smtp.port': "{{ playbook_smtp_port }}",
-  'wicket.backgroundThreadContextBuilder.url.serverPort': "{{ playbook_tomcat_http_port }}",
+  'wicket.backgroundThreadContextBuilder.url.scheme': "{{ playbook_background_url_server_scheme }}",
+  'wicket.backgroundThreadContextBuilder.url.serverName': "{{ playbook_background_url_server_name }}",
+  'wicket.backgroundThreadContextBuilder.url.serverPort': "{{ playbook_background_url_server_port }}",
   'task.startMode': 'auto'
 }
 playbook_config_properties: "{{ default_playbook_config_properties }}"
