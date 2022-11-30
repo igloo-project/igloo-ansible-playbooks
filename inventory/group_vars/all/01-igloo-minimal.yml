@@ -29,7 +29,7 @@ playbook_ssl_selfsigned_certs: false
 playbook_httpd_ssl_certificate: "{{ playbook_ssl_certificate }}"
 playbook_httpd_ssl_key: "{{ playbook_ssl_key }}"
 playbook_httpd_ssl_cacertificate: "{{ playbook_ssl_cacertificate }}"
-playbook_httpd_ssl_protocole: all -SSLv3 -TLSv1 -TLSv1.1
+playbook_httpd_ssl_protocol: all -SSLv3 -TLSv1 -TLSv1.1
 playbook_httpd_ssl_ciphersuite: ECDHE-ECDSA-AES128-GCM-SHA256:ECDHE-RSA-AES128-GCM-SHA256:ECDHE-ECDSA-AES256-GCM-SHA384:ECDHE-RSA-AES256-GCM-SHA384:ECDHE-ECDSA-CHACHA20-POLY1305:ECDHE-RSA-CHACHA20-POLY1305:DHE-RSA-AES128-GCM-SHA256:DHE-RSA-AES256-GCM-SHA384
 # Uncomment to use a robots.txt
 # playbook_httpd_conf_robots_txt: |

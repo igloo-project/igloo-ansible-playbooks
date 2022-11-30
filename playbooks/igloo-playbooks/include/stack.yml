@@ -109,7 +109,7 @@
       httpd_ssl_key: "{{ playbook_httpd_ssl_key }}"
       httpd_ssl_chain: "{{ playbook_httpd_ssl_chain }}"
       httpd_ssl_cacertificate: "{{ playbook_httpd_ssl_cacertificate }}"
-      httpd_ssl_protocol: "{{ playbook_httpd_ssl_protocole }}"
+      httpd_ssl_protocol: "{{ playbook_httpd_ssl_protocol }}"
       httpd_ssl_ciphersuite: "{{ playbook_httpd_ssl_ciphersuite }}"
       httpd_context_name: "{{ playbook_context_name }}"
       httpd_source_context_name: "{{ playbook_httpd_source_context_name }}"
