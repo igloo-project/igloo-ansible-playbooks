@@ -129,6 +129,7 @@
       httpd_api_endpoint: "{{ playbook_httpd_api_endpoint }}"
       httpd_custom_vhosts: "{{ playbook_httpd_custom_vhosts | default([]) }}"
       httpd_listens: "{{ playbook_httpd_listens | default([]) }}"
+      httpd_module_links_extra: "{{ playbook_httpd_module_links_extra | default([]) }}"
       tags: httpd
 
     - role: static_contents
