@@ -156,6 +156,8 @@
           postgresql_version: "{{ playbook_postgresql_version }}"
           port: "{{ playbook_postgresql_port }}"
           listen_addresses: "{{ playbook_postgresql_listen_addresses }}"
+          postgresql_conf_d: "{{ playbook_postgresql_postgresql_conf_d }}"
+          pg_hba_override: "{{ playbook_postgresql_pg_hba_override }}"
           databases:
             - name: "{{ playbook_postgresql_database }}"
               owner: "{{ playbook_postgresql_user }}"

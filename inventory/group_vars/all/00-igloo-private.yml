@@ -133,6 +133,13 @@ playbook_postgresql_postgis_package: "{{ 'postgis30_' + playbook_postgresql_vers
 playbook_postgresql_postgis_schema: postgis
 playbook_postgresql_search_path: null
 playbook_postgresql_listen_addresses: localhost
+playbook_postgresql_listen_addresses: localhost
+# allow to add additional configs in conf.d
+playbook_postgresql_postgresql_conf_d: []
+# - name: replica.conf
+#   content : "..."
+# allow to use a custom pg_hba.conf content
+playbook_postgresql_pg_hba_override: ""
 
 ## SMTP configuration
 playbook_smtp_host: localhost
