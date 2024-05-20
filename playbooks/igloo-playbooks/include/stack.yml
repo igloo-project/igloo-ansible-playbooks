@@ -126,6 +126,8 @@
       httpd_conf_proxypass_extra: "{{ playbook_httpd_conf_proxypass_extra | default('') }}"
       httpd_conf_robots_txt: "{{ playbook_httpd_conf_robots_txt }}"
       httpd_conf_error_override: "{{ playbook_httpd_conf_error_override }}"
+      httpd_conf_hsts_enable: "{{ playbook_httpd_conf_hsts_enable }}"
+      httpd_conf_hsts_max_age: "{{ playbook_httpd_conf_hsts_max_age }}"
       httpd_api_endpoint: "{{ playbook_httpd_api_endpoint }}"
       httpd_custom_vhosts: "{{ playbook_httpd_custom_vhosts | default([]) }}"
       httpd_listens: "{{ playbook_httpd_listens | default([]) }}"
