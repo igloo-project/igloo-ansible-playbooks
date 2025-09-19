@@ -22,3 +22,9 @@
       become: true
       become_user: root
       tags: deploy-war
+    
+    - role: deb_delivery
+      # file list of .deb files to copy and install
+      # a sudo rule must exists to allow .deb installation
+      # playbook_sudoers_deb must be true and sudoers provisioned
+      #delivery_deb_files: []

@@ -19,3 +19,9 @@
       delivery_tomcat_service: "tomcat@{{ playbook_application_name }}"
       delivery_tomcat_catalina_base: "{{ playbook_application_tomcat_path }}"
       delivery_context_name: "{{ playbook_context_name }}"
+    
+    - role: deb_delivery
+      # file list of .deb files to copy and install
+      # a sudo rule must exists to allow .deb installation
+      # playbook_sudoers_deb must be true and sudoers provisioned
+      #delivery_deb_files: []
