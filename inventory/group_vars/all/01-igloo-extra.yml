@@ -26,6 +26,8 @@
 # playbook_local_git_folder: "{{ '~/git' | expanduser }}"
 ## war path (target/) from project root
 # playbook_local_git_war_path: "{{ playbook_application_name }}-webapp/target/{{ playbook_application_name }}.war"
+## install sudoers to install deb file, needed for static resources deb delivery (delivery_deb_files)
+# playbook_sudoers_deb: false
 
 ## JAVA_HOME used for **building**
 # playbook_local_java_home: "{{ '~/Documents/apps/jdk-8' | expanduser }}"
