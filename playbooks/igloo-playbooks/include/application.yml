@@ -28,3 +28,4 @@
       # a sudo rule must exists to allow .deb installation
       # playbook_sudoers_deb must be true and sudoers provisioned
       #delivery_deb_files: []
+      tags: deploy-war
