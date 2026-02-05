@@ -1,16 +1,6 @@
 ---
 
-## retrieve local facts (needed for vagrant installation)
-- hosts: localhost
-  gather_facts: true
-
-- import_playbook: vagrant.yml
-
 - hosts: "{{ common_hosts }}"
   roles:
     - role: powo.utils
-    - role: epel
-      when: ansible_os_family == 'RedHat'
-      become: true
-      become_user: root
     - role: powertools

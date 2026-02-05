@@ -33,12 +33,6 @@ playbook_war_remote_src: false
 # see role backup
 playbook_delivery_backup: false
 
-## base image for vagrant
-playbook_vagrant_base: centos/8
-playbook_vagrant_path: "{{ inventory_dir | dirname }}/run/vagrant"
-## box alias, may be overriden by host
-playbook_vagrant_alias: "{{ inventory_hostname }}"
-
 ## use command-line args to override
 playbook_build_igloo: false
 playbook_build_project: false
@@ -50,8 +44,8 @@ playbook_rebuild_project: false
 distro_ssl_folder:
   RedHat: "/etc/httpd"
   Debian: "/etc/apache2"
-playbook_selfsigned_ssl_certificate: "{{ distro_ssl_folder | distro(vars) }}/certs/{{ playbook_application_name }}.crt"
-playbook_selfsigned_ssl_key: "{{ distro_ssl_folder | distro(vars) }}/certs/{{ playbook_application_name }}.key"
+playbook_selfsigned_ssl_certificate: "{{ lookup('distro', distro_ssl_folder) }}/certs/{{ playbook_application_name }}.crt"
+playbook_selfsigned_ssl_key: "{{ lookup('distro', distro_ssl_folder) }}/certs/{{ playbook_application_name }}.key"
 playbook_selfsigned_ssl_chain: ""
 playbook_selfsigned_ssl_cacertificate: "{{ playbook_ssl_certificate }}"
 playbook_letsencrypt_ssl_certificate: /etc/letsencrypt/live/{{ playbook_front_server_name }}/cert.pem
@@ -129,7 +123,7 @@ playbook_postgresql_maxPoolSize: 30
 playbook_postgresql_user: "{{ _playbook_application_name_database }}"
 playbook_postgresql_password: "{{ _playbook_application_name_database }}"
 playbook_postgresql_postgis: false
-playbook_postgresql_postgis_package: "{{ 'postgis30_' + playbook_postgresql_version | replace('.', '') if ansible_os_family == 'RedHat' else 'postgresql-' + playbook_postgresql_version + '-postgis-3' }}"
+playbook_postgresql_postgis_package: "{{ 'postgis30_' + playbook_postgresql_version | replace('.', '') if ansible_facts['os_family'] == 'RedHat' else 'postgresql-' + playbook_postgresql_version + '-postgis-3' }}"
 playbook_postgresql_postgis_schema: postgis
 playbook_postgresql_search_path: null
 playbook_postgresql_listen_addresses: localhost
@@ -146,7 +140,6 @@ playbook_smtp_port: 25
 
 ## misc
 playbook_download_target_path: /data/work
-playbook_is_vagrant_host: "{{ 'vagrant' in group_names }}"
 
 ## configuration properties
 # TODO: fix data.path (?)
@@ -217,4 +210,4 @@ playbook_firewall_skip_http: false
 playbook_firewall_skip_https: false
 playbook_firewall_services: []
 
-x_selinux_handle: "{{ ansible_selinux is defined and ansible_selinux == 'enabled' }}"
+x_selinux_handle: "{{ ansible_facts['selinux'] is defined and ansible_facts['selinux'] == 'enabled' }}"

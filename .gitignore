@@ -4,7 +4,6 @@ delivery/*
 log/*
 dependencies/*
 pyenv/
-/vagrant/
 
 *.retry
 *.pyc

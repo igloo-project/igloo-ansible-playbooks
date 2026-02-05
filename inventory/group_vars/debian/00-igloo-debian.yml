@@ -10,8 +10,6 @@
 ## python3 is needed for firewalld bindings
 ansible_python_interpreter: /usr/bin/python3
 
-playbook_vagrant_base: debian/buster64
-
 # openjdk & debian - see 00-igloo-private.yml
 playbook_java_version: 11
 playbook_java_package: openjdk-11-jre
