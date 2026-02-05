@@ -132,6 +132,7 @@
       httpd_custom_vhosts: "{{ playbook_httpd_custom_vhosts | default([]) }}"
       httpd_listens: "{{ playbook_httpd_listens | default([]) }}"
       httpd_module_links_extra: "{{ playbook_httpd_module_links_extra | default([]) }}"
+      httpd_logs_json_enable: "{{ playbook_httpd_logs_json_enable | default(False) }}"
       tags: httpd
 
     - role: static_contents
