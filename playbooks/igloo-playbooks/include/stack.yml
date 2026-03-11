@@ -138,7 +138,7 @@
     - role: static_contents
       static_archive: "{{ playbook_static_archive }}"
       static_target: "{{ playbook_application_path }}/site"
-      when: static_deploy | default(False)
+      when: static_deploy | bool | default(False)
 
     - role: logrotate
       become: yes
